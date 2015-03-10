@@ -71,27 +71,26 @@ body {
     }
 }
 .mobile-bar {
-
     z-index: 2;
     position: absolute;
     bottom: -3px;
     width: 100%;
     padding-left: 83px;
-    .track-info{
+    .track-info {
         transition: all .2s $nice-bezier;
-        position:relative;
-        top:10px;
+        position: relative;
+        top: 10px;
         opacity: 0;
         color: #FFF;
         padding: 10px 0 10px 25px;
         @include rem(font-size, 1rem);
-        span{
+        span {
             color: $gold;
             font-style: italic;
             display: block;
         }
-        &.visible{
-            top:0;
+        &.visible {
+            top: 0;
             opacity: 1;
         }
     }

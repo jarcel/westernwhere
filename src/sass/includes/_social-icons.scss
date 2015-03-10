@@ -69,6 +69,7 @@
     border: 1px #FFF solid;
     outline: 1px solid transparent;
     backface-visibility: hidden;
+    transition: color .2s $nice-bezier;
 }
 .share-box-circle .share-menu-toggle + label {
     width: 60px;
