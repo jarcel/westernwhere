@@ -64,6 +64,7 @@ body {
         }
     }
     @media screen and (min-width: $screen-md) {
+        animation: contentReveal .5s ease forwards 4.5s;
         @include rem(font-size, 2rem);
         p {
             @include rem(line-height, 3rem);
