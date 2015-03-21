@@ -1,7 +1,6 @@
 // modules =================================================
 var express        	= require('express'),
 	app            	= express(),
-	// mongoose     = require('mongoose'),
 	bodyParser     	= require('body-parser'),
 	favicon 		= require('serve-favicon'),
 	methodOverride 	= require('method-override'),
@@ -9,7 +8,6 @@ var express        	= require('express'),
 
 // configuration ===========================================
 // config files
-// var db = require('./config/db');
 
 var port = process.env.PORT || 8080; // set our port
 

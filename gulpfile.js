@@ -43,6 +43,21 @@ gulp.task('watch:js', ['js'], function() {
     gulp.watch('src/ng/**/*.js', ['js']);
 });
 
+gulp.task('scripts', function() {
+    return gulp.src([
+            'src/libs/angular/angular.min.js',
+            'src/libs/angular-animate/angular-animate.min.js',
+            'src/libs/onepage-scroll/onepagescroll.min.js',
+            'src/libs/plangular/ng-plangular.min.js',
+            'src/libs/angular-svg-round-progressbar/build/roundProgress.min.js'
+        ])
+        .pipe(concat('vendor.js'))
+        .pipe(uglify({
+            mangle: false
+        }))
+        .pipe(gulp.dest('public/js'));
+});
+
 gulp.task('default', ['watch:sass', 'watch:js', 'server']);
 
 gulp.task('images', function(cb) {
