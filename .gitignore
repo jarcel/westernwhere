@@ -3,5 +3,6 @@
 .sass-cache/*
 node_modules/*
 raw-img/*
+src/libs
 
 npm-debug.log
