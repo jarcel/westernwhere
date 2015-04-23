@@ -24,7 +24,7 @@ exports.subscribe = function(req, res) {
                 res.send(403, error.message );
             } else {
                 console.log(JSON.stringify(data));
-                res.send("Thank you for signing up, you'll hear from us soon!"); // Do something with your data!
+                res.send("Thank you for signing up! You'll be the first to know when we have new releases."); // Do something with your data!
             }
         });
     }
