@@ -10,6 +10,7 @@ html, body {
     box-sizing: inherit;
     font-smoothing: antialiased !important;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    outline: 0;
 }
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
@@ -309,6 +310,7 @@ body {
     p {
         display: none;
     }
+    form{ display: inline;}
     button {
         position: relative;
         background: none;
@@ -320,13 +322,16 @@ body {
         transition: all .3s $nice-bezier;
         text-align: center;
         width: 200px;
-        margin: 20px auto 0;
+        margin: 20px 5px 0;
         &:hover {
             border: 1px solid $gold;
         }
         &.playing {
             background: $gold;
             border: 1px solid $gold;
+        }
+        &:last-of-type{
+            margin: 10px 5px 0;
         }
     }
     @media screen and (min-width: $screen-sm) {
@@ -348,7 +353,7 @@ body {
             @include rem(font-size, 3rem);
         }
         button {
-            margin: 10px auto;
+            margin: 10px 10px 0px 0px;
         }
     }
     @media screen and (min-width: $screen-md) {
@@ -372,8 +377,12 @@ body {
             @include rem(font-size, 1.6rem);
             margin: 0;
             position: absolute;
-            top: 30px;
+            top: 15px;
             right: 30px;
+            &.add-to-cart{
+                top: 65px;
+            }
         }
+
     }
 }

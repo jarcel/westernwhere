@@ -5,19 +5,18 @@
     <meta charset="utf-8">
     <base href="/">
     <title>Western Where Records - All 45's, All the time!</title>
-    <meta name="description" content="Independent record label from Detroit, MI - All Jukebox 45's, All the time!">
+    <meta name="description" content="Independent record label from Detroit, MI - All 45's, All the time!">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@WesternWhereRec">
     <meta name="twitter:title" content="Western Where Records">
-    <meta name="twitter:description" content="Independent record label from Detroit, MI - All Jukebox 45's, All the time!">
+    <meta name="twitter:description" content="Independent record label from Detroit, MI - All 45's, All the time!">
     <meta name="twitter:image:src" content="http://westernwhererecords.com/img/ww-logo.png">
     <meta property="og:title" content="Western Where Records">
     <meta property="og:image" content="http://westernwhererecords.com/img/ww-logo.png">
     <meta property="og:site_name" content="Western Where Records">
     <meta property="og:url" content="http://westernwhererecords.com/">
-    <meta property="og:description" content="Independent record label from Detroit, MI - All Jukebox 45's, All the time!">
-
+    <meta property="og:description" content="Independent record label from Detroit, MI - All 45's, All the time!">
     <link href="/css/styles.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
@@ -25,16 +24,15 @@
 <body class="welcome">
     <div class="page-wrapper">
         <section class="intro-wrapper">
-
             <div class="logo-container" ng-include="'/img/ww-logo.svg'"></div>
             <div class="content-container">
                 <h1>Western Where</h1>
                 <form ng-controller="FormControl" name="signUp" class="email-signup" ng-submit="subscribe(signUp.$valid)" novalidate>
-                    <p ng-hide="successMsg"><span>Western Where Records is coming.</span> Sign up to be the first to know when we're ready.</p>
+                    <p ng-hide="successMsg"><span>All 45's, All The Time</span> Sign up below to be in the know.</p>
                     <p ng-if="errorMsg">{{errorMsg}}</p>
                     <p ng-if="successMsg">{{successMsg}}</p>
                     <div ng-hide="successMsg">
-                    <input class="form-control" type="email" name="email"  placeholder="Enter your email address" ng-model="Form.email" required><button type="submit" ng-disabled="signUp.$invalid">Sign Up</button>
+                        <input class="form-control" type="email" name="email" placeholder="Enter your email address" ng-model="Form.email" required><button type="submit" ng-disabled="signUp.$invalid">Sign Up</button>
                     </div>
                 </form>
             </div>
@@ -50,6 +48,13 @@
                         <span ng-hide="player.playing == track">Listen</span>
                         <span ng-show="player.playing == track">Now Playing</span>
                     </button>
+                    <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="FY4DTRX29YKM8">
+                        <button class="add-to-cart" name="submit">
+                            <span>Add To Cart</span>
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>
@@ -64,10 +69,16 @@
                         <span ng-hide="player.playing == track">Listen</span>
                         <span ng-show="player.playing == track">Now Playing</span>
                     </button>
+                    <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="5FKBSMCHZZCYN">
+                        <button class="add-to-cart" name="submit">
+                            <span>Add To Cart</span>
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>
-
     </div>
     <div plangular class="mobile-bar">
         <div class="track-info" ng-class="{'visible' : player.playing}">
@@ -89,22 +100,33 @@
     </div>
     <div class="share-box-circle">
         <div class="share-box-inner">
-          <input class="share-menu-toggle" id="share-menu-circle" type="checkbox"><label for="share-menu-circle">
-            <div class="fa fa-share-alt"></div>
-          </label>
-          <ul class="share-menu">
-            <li class="share-menu-item">
-              <a class="fa fa-facebook" href="https://www.facebook.com/westernwhererecords" target="_blank"></a>
-            </li>
-            <li class="share-menu-item">
-              <a class="fa fa-twitter" href="https://twitter.com/WesternWhereRec" target="_blank"></a>
-            </li>
-            <li class="share-menu-item">
-              <a class="fa fa-instagram" href="https://instagram.com/westernwhere/" target="_blank"></a>
-            </li>
-          </ul>
+            <input class="share-menu-toggle" id="share-menu-circle" type="checkbox">
+            <label for="share-menu-circle">
+                <div class="fa fa-share-alt"></div>
+            </label>
+            <ul class="share-menu">
+                <li class="share-menu-item">
+                    <a class="fa fa-facebook" href="https://www.facebook.com/westernwhererecords" target="_blank"></a>
+                </li>
+                <li class="share-menu-item">
+                    <a class="fa fa-twitter" href="https://twitter.com/WesternWhereRec" target="_blank"></a>
+                </li>
+                <li class="share-menu-item">
+                    <a class="fa fa-instagram" href="https://instagram.com/westernwhere/" target="_blank"></a>
+                </li>
+            </ul>
         </div>
-      </div>
+    </div>
+    <div class="shopping-cart">
+        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" >
+            <input type="hidden" name="cmd" value="_cart">
+            <input type="hidden" name="business" value="ENZQAZKCSU7MA">
+            <input type="hidden" name="display" value="1">
+            <button name="submit">
+                <i class="fa fa-shopping-cart"></i>
+            </button>
+        </form>
+    </div>
     <script src="/js/vendor.js"></script>
     <script src="/js/app.js"></script>
     <script>
