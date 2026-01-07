@@ -1,0 +1,116 @@
+@use "shared" as *;
+
+.share-menu {
+  list-style: none;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  }
+
+.share-box-inner {
+  position: relative; }
+
+.share-menu-toggle {
+    display: none;
+}
+.share-menu-toggle + label {
+    background-color: $gold;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    padding:15px;
+    margin: 0;
+    position: relative;
+    z-index: 10;
+    transition: all 0.2s linear;
+}
+.share-menu-toggle + label:hover {
+    background-color: black;
+}
+.share-menu-toggle:checked + label {
+    background: white;
+    color: #333333;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+.share-box-circle, .shopping-cart {
+    position: fixed;
+    top: 50px;
+    right: 85px;
+    margin: -30px 0 0 -30px;
+    transition: right .2s $nice-bezier;
+    .welcome &{
+      opacity: 0;
+      animation: fadeIn .5s ease forwards 4.5s;
+    }
+    @media all and (orientation:portrait)
+      and (max-width: $screen-sm){
+      .viewing-page-1 &{
+        right: -70px; 
+      }
+    }
+}
+.share-box-circle .share-menu-item {
+    transition: all 0.25s cubic-bezier(0.65, -0.375, 0.955, 0.305);
+    transform: translate(0, 0) scale(0);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -25px;
+}
+.share-box-circle .share-menu-item a {
+    display: block;
+    line-height: 50px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    border: 1px #FFF solid;
+    outline: 1px solid transparent;
+    backface-visibility: hidden;
+    transition: color .2s $nice-bezier;
+}
+.share-box-circle .share-menu-toggle + label {
+    width: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+}
+.share-box-circle .share-menu-toggle:checked + label + ul li {
+    transition-timing-function: cubic-bezier(0.095, 0.64, 0.36, 1.365);
+}
+.share-box-circle .share-menu-toggle:checked + label + ul li:nth-child(1) {
+    transform: translate(0em, 7em) scale(1);
+}
+.share-box-circle .share-menu-toggle:checked + label + ul li:nth-child(2) {
+    transform: translate(-5.5em, 5.5em) scale(1);
+}
+.share-box-circle .share-menu-toggle:checked + label + ul li:nth-child(3) {
+    transform: translate(-7em, 0em) scale(1);
+}
+
+.shopping-cart{
+    right: 20px;
+
+    button{
+        background: $gold;
+        border:none;
+        display: block;
+        line-height: 50px;
+        height: 54px;
+        width: 54px;
+        border-radius: 50%;
+        text-align: center;
+        color: white;
+        font-size: 20px;
+        text-decoration: none;
+        backface-visibility: hidden;
+        transition: all .2s $nice-bezier;
+        margin-top: 2px;
+        &:hover{
+            background: black;
+        }
+    }
+}

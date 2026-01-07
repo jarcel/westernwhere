@@ -1,0 +1,388 @@
+@use "shared" as *;
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+    font-smoothing: antialiased !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    outline: 0;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+body {
+    background: #000;
+}
+.intro-wrapper {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    width: 100%;
+    backface-visibility: none;
+    animation: prettyFade 2s linear reverse;
+    background: url('/img/bg.jpg') center center no-repeat;
+    background-size: cover;
+    @include rem(padding, 2rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &:before {
+        content: '';
+        height: 33%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: linear-gradient(to bottom, rgba(#000, 0) 0%, rgba(#000, 1) 100%);
+        opacity: 1;
+    }
+    @media screen and (min-width: $screen-md) {
+        @include rem(padding, 5rem 2rem);
+    }
+}
+.content-container {
+    @include rem(font-size, 1.4rem);
+    color: #FFF;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    opacity: 0;
+    padding: 0 10px;
+    animation: contentReveal .5s ease forwards 5.5s;
+    h1 {
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+        text-transform: lowercase;
+        margin: 0;
+    }
+    p {
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+        @include rem(line-height, 2.2rem);
+        span {
+            display: block;
+        }
+    }
+    @media screen and (min-width: $screen-md) {
+        @include rem(font-size, 2rem);
+        p {
+            @include rem(line-height, 3rem);
+        }
+    }
+}
+.mobile-bar {
+    z-index: 100;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-left: 83px;
+    .track-info {
+        transition: all .2s $nice-bezier;
+        position: relative;
+        top: 10px;
+        opacity: 0;
+        color: #FFF;
+        padding: 10px 0 10px 25px;
+        @include rem(font-size, 1rem);
+        span {
+            color: $gold;
+            font-style: italic;
+            display: block;
+        }
+        &.visible {
+            top: 0;
+            opacity: 1;
+        }
+    }
+    progress {
+        margin: 0;
+        color: #FFF;
+        height: 10px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.125);
+        border: 0;
+        -webkit-appearance: none;
+        cursor: pointer;
+        &::-webkit-progress-bar {
+            -webkit-appearance: none;
+            background-color: rgba(0, 0, 0, 0.125);
+        }
+        &::-webkit-progress-value {
+            -webkit-appearance: none;
+            background-color: $gold;
+        }
+        &::-moz-progress-bar {
+            background-color: $gold;
+        }
+    }
+}
+.record-container {
+    position: fixed;
+    z-index: 99;
+    left: 50%;
+    animation: listenMode .8s ease both;
+    transform: translateX(-50%) translateY(0%);
+    width: 300px;
+    top: 100%;
+    .rc-sleeve {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        right: -3px;
+    }
+    .rc-player, .rc-progress {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: scale(1) translateX(-50%) translateY(calc(-50%)) rotate(-15deg);
+        @media screen and (min-width: $screen-sm) {
+            transform: scale(1) translateX(-50%) translateY(calc(-50% - 6px)) rotate(-15deg);
+        }
+    }
+    .rc-player {
+        z-index: 1;
+        background: none;
+        border: none;
+        border-radius: 50%;
+        color: #FFF;
+        padding: 40px;
+        outline: none !important;
+        transition: all .2s ease;
+        opacity: 1;
+        .plangular-icon {
+            width: 2rem;
+            height: 2rem;
+        }
+        &:hover {
+            opacity: 1;
+        }
+        @media screen and (min-width: $screen-sm) {
+            padding: 70px;
+            opacity: .6;
+        }
+    }
+    .rc-progress {
+        display: none;
+        transition: all .3s ease;
+        &.hidden {
+            transform-origin: top center;
+            transform: scale(1.3) translateX(-50%) translateY(-50%) rotate(-15deg);
+        }
+    }
+    #ww-record {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 96%;
+        max-width: 96%;
+        position: absolute;
+        transition: all .3s $nice-bezier;
+        top: 5px;
+        z-index: -1;
+        &.play {
+            animation: playIt 1.333s linear infinite;
+        }
+    }
+    .scroll-lure {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        display: none;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+    .welcome & {
+        animation: recordIn .3s ease-in forwards 5s;
+        .rc-player, .rc-progress {
+            display: none;
+        }
+        .scroll-lure {
+            display: block;
+        }
+    }
+    @media screen and (min-width: $screen-sm) {
+        width: 600px;
+        &:hover {
+            #ww-record {
+                top: -160px;
+                transform: translateX(-50%) rotate(-15deg);
+            }
+        }
+        &:active, &:focus {
+            #ww-record {
+                top: 5px !important;
+                transform: translateX(-50%) rotate(0deg);
+            }
+        }
+        .rc-progress {
+            display: block;
+        }
+    }
+}
+.logo-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    animation: logoScale 1s ease both 4s;
+    @media screen and (min-width: $screen-md) {
+        width: 800px;
+    }
+}
+#ww-logo {
+    outline: none;
+    width: 100%;
+    height: auto;
+    .ww-shine {
+        path {
+            fill: rgba(#FFF, 1);
+            transform: scale(0);
+            transform-origin: center center;
+            &:nth-child(6), &:nth-child(7) {
+                animation: popIn 0.3s ease forwards 3.3s;
+            }
+            &:nth-child(2), &:nth-child(4) {
+                animation: popIn 0.3s ease forwards 3.2s;
+            }
+            &:nth-child(5), &:nth-child(3) {
+                animation: popIn 0.3s ease forwards 3.1s;
+            }
+            &:nth-child(1) {
+                animation: popIn 0.3s ease forwards 3s;
+            }
+        }
+    }
+    .ww-diamond {
+        animation: draw 3s forwards ease-in 1s, fillIn .3s forwards ease-in 3s;
+        fill: rgba(#FFF, .0);
+        stroke: rgba(#FFF, 1);
+        stroke-width: 1;
+        stroke-dasharray: 5288.302734375;
+        stroke-dashoffset: 5288.302734375;
+    }
+}
+.artist {
+    text-align: center;
+    position: relative;
+    padding: 30px;
+    color: #FFF;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &:before {
+        content: '';
+        height: 33%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: linear-gradient(to bottom, rgba(#000, 0) 0%, rgba(#000, 1) 100%);
+        opacity: .8;
+    }
+    .content {
+        max-width: 850px;
+        position: relative;
+    }
+    .cat-no {
+        @include rem(font-size, 1.2rem);
+    }
+    h2 {
+        margin: 0;
+        color: $gold;
+        @include rem(font-size, 2.8rem);
+    }
+    h3 {
+        margin: 0;
+        font-family: 'LibreBaskerville-Regular', serif;
+        @include rem(font-size, 1.8rem);
+    }
+    p {
+        display: none;
+    }
+    form{ display: inline;}
+    button {
+        position: relative;
+        background: none;
+        border: 1px solid #FFF;
+        @include rem(font-size, 1.2rem);
+        text-transform: uppercase;
+        outline: none !important;
+        padding: 10px 20px;
+        transition: all .3s $nice-bezier;
+        text-align: center;
+        width: 200px;
+        margin: 20px 5px 0;
+        &:hover {
+            border: 1px solid $gold;
+        }
+        &.playing {
+            background: $gold;
+            border: 1px solid $gold;
+        }
+        &:last-of-type{
+            margin: 10px 5px 0;
+        }
+    }
+    @media screen and (min-width: $screen-sm) {
+        text-align: left;
+        p {
+            display: block;
+            text-align: left;
+            @include rem(font-size, 1.4rem);
+            @include rem(line-height, 3rem);
+        }
+        h2 {
+            margin: 0;
+            color: $gold;
+            @include rem(font-size, 5rem);
+        }
+        h3 {
+            margin: 0;
+            font-family: 'LibreBaskerville-Regular', serif;
+            @include rem(font-size, 3rem);
+        }
+        button {
+            margin: 10px 10px 0px 0px;
+        }
+    }
+    @media screen and (min-width: $screen-md) {
+        padding: 50px 80px 50px 350px;
+        .content {
+            border-left: 1px solid $gold;
+            padding-left: 50px;
+        }
+        p {
+            display: block;
+            text-align: left;
+            @include rem(font-size, 1.6rem);
+            @include rem(line-height, 3.5rem);
+        }
+    }
+    @media screen and (min-width: $screen-lg) {
+        button {
+            @include rem(font-size, 1.6rem);
+            margin: 0;
+            position: absolute;
+            top: 15px;
+            right: 30px;
+            &.add-to-cart{
+                top: 65px;
+            }
+        }
+
+    }
+}

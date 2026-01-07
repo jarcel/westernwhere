@@ -1,0 +1,25 @@
+@use "shared" as *;
+
+body, html {
+  margin: 0;
+}
+
+body, .page-wrapper, html {
+  display: block;
+  position: static;
+  padding: 0;
+  width: 100%;
+}
+
+.page-wrapper {
+  width: 100%;
+  display: block;
+  position: relative;
+  padding: 0;
+}
+
+.page-wrapper > section {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
