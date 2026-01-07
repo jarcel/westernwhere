@@ -1,0 +1,110 @@
+@use "sass:color";
+@use "shared" as *;
+
+.email-signup {
+	margin: 0 auto;
+	@include rem(max-width, 50rem);
+    input[type=email] {
+    	transition: all .2s ease-in-out;
+        color: #000;
+        border: none;
+        background: rgba(#FFF, .9);
+        @include rem(height, 4rem);
+        width: 100%;
+        @include rem(font-size, 1.4rem);
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        @include rem(padding, 0 1rem);
+        margin: 0;
+        outline: none !important;
+        @include rem(border-radius, .5rem .5rem 0 0);
+        @media screen and (min-width: $screen-sm) {
+            @include rem(border-radius, .3rem 0 0 .3rem);
+            @include rem(width, 30rem);
+        }
+        &:focus{
+        	background: rgba(#FFF, 1);
+        }
+    }
+    button {
+
+        outline: none !important;
+        display: block;
+        border: none;
+        background: $gold;
+        margin: 0;
+        text-align: center;
+        @include rem(height, 4rem);
+        @include rem(font-size, 1.6rem);
+        @include rem(padding, 0 1rem);
+        width: 100%;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        @include rem(border-radius, 0 0 .5rem .5rem);
+        @media screen and (min-width: $screen-sm) {
+            display: inline-block;
+            position: relative;
+            top: 1px;
+            @include rem(border-radius, 0 .3rem .3rem 0);
+            width: auto;
+        }
+        &:hover{
+        	background: color.adjust($gold, $lightness: -5%);
+        }
+        &:active{
+			     box-shadow: inset 0 0 30px rgba(#000, .3);
+        }
+        &:disabled{
+          opacity: .8;
+        }
+    }
+}
+
+/* Place Holder CSS */
+::-webkit-input-placeholder {
+  color: #000;
+  opacity: 0.5;
+  -webkit-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+}
+:-moz-placeholder {
+  color: #000;
+  opacity: 0.5;
+  -moz-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+}
+::-moz-placeholder {
+  color: #000;
+  opacity: 0.5;
+  -moz-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+}
+:-ms-input-placeholder {
+  color: #000;
+  opacity: 0.5;
+  -ms-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+}
+
+/* Place Holder CSS for Focus */
+:focus::-webkit-input-placeholder {
+  opacity: 0;
+  -webkit-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+}
+:focus:-moz-placeholder {
+  opacity: 0;
+  -moz-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+}
+:focus::-moz-placeholder {
+  opacity: 0;
+  -moz-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+}
+:focus:-ms-input-placeholder {
+  opacity: 0;
+  -ms-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+}

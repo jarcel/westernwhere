@@ -1,0 +1,24 @@
+@use "shared" as *;
+
+.artist {
+	&#autumn-wetli {
+		@media all and (orientation:portrait) and (max-width: $screen-sm) {  
+		    background: url('/img/artists/artist-bg-autumn-wetli-ls.jpg') top center no-repeat;
+    		background-size: cover;
+		}  
+		@media all and (orientation:landscape) {  
+		    background: url('/img/artists/artist-bg-autumn-wetli.jpg') top right no-repeat;
+    		background-size: cover;  
+		}
+    }
+    &#craig-brown {
+    	@media all and (orientation:portrait) and (max-width: $screen-sm) {  
+		    background: url('/img/artists/artist-bg-craig-brown-ls.jpg') top center no-repeat;
+    		background-size: cover;
+		}  
+		@media all and (orientation:landscape) {  
+		    background: url('/img/artists/artist-bg-craig-brown.jpg') top right no-repeat;
+    		background-size: cover;  
+		}
+    }
+}
