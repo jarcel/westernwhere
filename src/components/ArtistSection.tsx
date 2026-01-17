@@ -13,7 +13,6 @@ interface ArtistSectionProps {
   title: string
   description: string
   track: Track
-  paypalButtonId: string
 }
 
 export function ArtistSection({
@@ -23,7 +22,6 @@ export function ArtistSection({
   title,
   description,
   track,
-  paypalButtonId,
 }: ArtistSectionProps) {
   const { currentTrack, isPlaying, playPause } = useAudioPlayer()
   const isCurrentTrack = currentTrack?.id === track.id
@@ -43,13 +41,9 @@ export function ArtistSection({
           >
             <span>{isThisPlaying ? 'Now Playing' : 'Listen'}</span>
           </button>
-          <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-            <input type="hidden" name="cmd" value="_s-xclick" />
-            <input type="hidden" name="hosted_button_id" value={paypalButtonId} />
-            <button className="add-to-cart" name="submit">
-              <span>Add To Cart</span>
-            </button>
-          </form>
+          <button className="sold-out" disabled>
+            <span>Sold Out</span>
+          </button>
         </div>
       </div>
     </section>
