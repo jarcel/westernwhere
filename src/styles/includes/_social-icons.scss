@@ -74,9 +74,12 @@
     transition: color .2s $nice-bezier;
 }
 .share-box-circle .share-menu-toggle + label {
+    display: block;
     width: 60px;
+    height: 60px;
     line-height: 60px;
     border-radius: 50%;
+    padding: 0;
 }
 .share-box-circle .share-menu-toggle:checked + label + ul li {
     transition-timing-function: cubic-bezier(0.095, 0.64, 0.36, 1.365);
@@ -96,11 +99,11 @@
 
     button{
         background: $gold;
-        border:none;
+        border: none;
         display: block;
-        line-height: 50px;
-        height: 54px;
-        width: 54px;
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
         border-radius: 50%;
         text-align: center;
         color: white;
@@ -108,9 +111,16 @@
         text-decoration: none;
         backface-visibility: hidden;
         transition: all .2s $nice-bezier;
-        margin-top: 2px;
+        padding: 0;
         &:hover{
             background: black;
+        }
+        &:disabled{
+            opacity: 0.5;
+            cursor: not-allowed;
+            &:hover{
+                background: $gold;
+            }
         }
     }
 }

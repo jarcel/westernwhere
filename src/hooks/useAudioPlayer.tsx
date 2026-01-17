@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useRef, useEffect, useCallback, Re
 
 export interface Track {
   id: string
+  artist: string
   title: string
   src: string
 }
@@ -37,14 +38,20 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
       setCurrentTime(0)
     }
 
+    const handleError = () => {
+      console.error('Audio error:', audio.error)
+    }
+
     audio.addEventListener('timeupdate', handleTimeUpdate)
     audio.addEventListener('durationchange', handleDurationChange)
     audio.addEventListener('ended', handleEnded)
+    audio.addEventListener('error', handleError)
 
     return () => {
       audio.removeEventListener('timeupdate', handleTimeUpdate)
       audio.removeEventListener('durationchange', handleDurationChange)
       audio.removeEventListener('ended', handleEnded)
+      audio.removeEventListener('error', handleError)
       audio.pause()
     }
   }, [])
@@ -60,7 +67,9 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
       setCurrentTime(0)
     }
 
-    audio.play()
+    audio.play().catch((error) => {
+      console.error('Audio playback failed:', error)
+    })
     setIsPlaying(true)
   }, [currentTrack])
 

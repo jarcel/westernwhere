@@ -10,11 +10,13 @@ import { ShoppingCart } from './components/ShoppingCart.tsx'
 const tracks = {
   autumnWetli: {
     id: 'autumn-wetli',
+    artist: 'Autumn Nicole Wetli',
     title: 'I Still Go On',
     src: '/audio/autumn-wetli-i-still-go-on.mp3',
   },
   craigBrown: {
     id: 'craig-brown',
+    artist: 'Craig Brown',
     title: "Shoulda Been Fishin'",
     src: '/audio/craig-brown-shoulda-been-fishin.mp3',
   },
@@ -50,7 +52,7 @@ function AppContent() {
         <ArtistSection {...artists.craigBrown} />
       </div>
       <MobilePlayerBar />
-      <RecordPlayer />
+      <RecordPlayer defaultTrack={tracks.autumnWetli} />
       <ShareMenu />
       <ShoppingCart />
     </div>

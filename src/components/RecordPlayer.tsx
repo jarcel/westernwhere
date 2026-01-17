@@ -1,7 +1,11 @@
-import { useAudioPlayer } from '../hooks/useAudioPlayer.tsx'
+import { useAudioPlayer, Track } from '../hooks/useAudioPlayer.tsx'
 import { usePageScroll } from '../hooks/usePageScroll.tsx'
 import recordSvg from '../assets/img/ww-record.svg'
 import sleeveWebp from '../assets/img/ww-sleeve.webp'
+
+interface RecordPlayerProps {
+  defaultTrack: Track
+}
 
 function PlayIcon() {
   return (
@@ -20,7 +24,7 @@ function PauseIcon() {
   )
 }
 
-export function RecordPlayer() {
+export function RecordPlayer({ defaultTrack }: RecordPlayerProps) {
   const { isPlaying, currentTime, duration, currentTrack, playPause } = useAudioPlayer()
   const { dismissWelcome } = usePageScroll()
 
@@ -29,18 +33,18 @@ export function RecordPlayer() {
   const strokeDashoffset = circumference * (1 - progress)
 
   const handlePlayPause = () => {
-    if (currentTrack) {
-      playPause(currentTrack)
-    }
+    const trackToPlay = currentTrack || defaultTrack
+    playPause(trackToPlay)
   }
 
-  const handleScrollDown = () => {
+  const handleScrollDown = (e: React.MouseEvent) => {
+    e.stopPropagation()
     dismissWelcome()
     window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
   }
 
   return (
-    <div className="record-container">
+    <div className="record-container" onClick={handlePlayPause}>
       <img className="rc-sleeve" src={sleeveWebp} alt="" />
       <img
         id="ww-record"
@@ -68,13 +72,13 @@ export function RecordPlayer() {
             strokeDasharray={circumference}
             strokeDashoffset={strokeDashoffset}
             transform="rotate(-90 80 80)"
-            style={{ transition: 'stroke-dashoffset 0.1s linear' }}
+            style={{ transition: isPlaying ? 'stroke-dashoffset 0.25s linear' : 'none' }}
           />
         </svg>
       </div>
-      <button className="rc-player" onClick={handlePlayPause} disabled={!currentTrack}>
+      <div className="rc-player">
         {isPlaying ? <PauseIcon /> : <PlayIcon />}
-      </button>
+      </div>
       <div className="scroll-lure" onClick={handleScrollDown}></div>
     </div>
   )
