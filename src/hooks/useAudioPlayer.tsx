@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useRef, useEffect, useCallback, ReactNode } from 'react'
 
-interface Track {
+export interface Track {
   id: string
   title: string
   src: string

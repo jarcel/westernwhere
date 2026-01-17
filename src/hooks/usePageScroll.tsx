@@ -14,17 +14,16 @@ export function PageScrollProvider({ children }: { children: ReactNode }) {
     setIsWelcome(false)
   }, [])
 
-  // Dismiss welcome state on first scroll
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50 && isWelcome) {
+      if (window.scrollY > 50) {
         setIsWelcome(false)
       }
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [isWelcome])
+  }, [])
 
   return (
     <PageScrollContext.Provider value={{ isWelcome, dismissWelcome }}>

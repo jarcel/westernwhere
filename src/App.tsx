@@ -1,13 +1,12 @@
-import { AudioPlayerProvider } from './hooks/useAudioPlayer'
-import { PageScrollProvider, usePageScroll } from './hooks/usePageScroll'
-import { IntroSection } from './components/IntroSection'
-import { ArtistSection } from './components/ArtistSection'
-import { RecordPlayer } from './components/RecordPlayer'
-import { MobilePlayerBar } from './components/MobilePlayerBar'
-import { ShareMenu } from './components/ShareMenu'
-import { ShoppingCart } from './components/ShoppingCart'
+import { AudioPlayerProvider } from './hooks/useAudioPlayer.tsx'
+import { PageScrollProvider, usePageScroll } from './hooks/usePageScroll.tsx'
+import { ArtistSection } from './components/ArtistSection.tsx'
+import { IntroSection } from './components/IntroSection.tsx'
+import { MobilePlayerBar } from './components/MobilePlayerBar.tsx'
+import { RecordPlayer } from './components/RecordPlayer.tsx'
+import { ShareMenu } from './components/ShareMenu.tsx'
+import { ShoppingCart } from './components/ShoppingCart.tsx'
 
-// Track data - replace src with your actual MP3 file paths
 const tracks = {
   autumnWetli: {
     id: 'autumn-wetli',

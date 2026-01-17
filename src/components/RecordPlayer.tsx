@@ -1,5 +1,5 @@
-import { useAudioPlayer } from '../hooks/useAudioPlayer'
-import { usePageScroll } from '../hooks/usePageScroll'
+import { useAudioPlayer } from '../hooks/useAudioPlayer.tsx'
+import { usePageScroll } from '../hooks/usePageScroll.tsx'
 import recordSvg from '../assets/img/ww-record.svg'
 import sleevePng from '../assets/img/ww-sleeve.png'
 

@@ -1,10 +1,4 @@
-import { useAudioPlayer } from '../hooks/useAudioPlayer'
-
-interface Track {
-  id: string
-  title: string
-  src: string
-}
+import { useAudioPlayer, Track } from '../hooks/useAudioPlayer.tsx'
 
 interface ArtistSectionProps {
   id: string

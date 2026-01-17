@@ -1,4 +1,4 @@
-import { useAudioPlayer } from '../hooks/useAudioPlayer'
+import { useAudioPlayer } from '../hooks/useAudioPlayer.tsx'
 
 export function MobilePlayerBar() {
   const { currentTrack, isPlaying, currentTime, duration, seek } = useAudioPlayer()
