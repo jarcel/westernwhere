@@ -116,3 +116,10 @@
         }
     }
 }
+@media screen and (min-width: $screen-lg) {
+    @keyframes recordIn {
+        100% {
+            top: calc(100% - 150px);
+        }
+    }
+}

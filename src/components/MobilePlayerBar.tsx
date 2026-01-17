@@ -16,14 +16,17 @@ export function MobilePlayerBar() {
   return (
     <div className="mobile-bar">
       <div className={`track-info ${isPlaying ? 'visible' : ''}`}>
-        <span>Now Playing</span> {currentTrack?.title || ''}
+        <span>Now Playing</span> {currentTrack ? `${currentTrack.artist} - "${currentTrack.title}"` : ''}
       </div>
-      <progress
-        value={progress}
-        onClick={handleSeek}
-      >
-        {Math.round(progress * 100)}%
-      </progress>
+      <div className="progress-bar" onClick={handleSeek}>
+        <div
+          className="progress-fill"
+          style={{
+            width: `${progress * 100}%`,
+            transition: isPlaying ? 'width 0.25s linear' : 'none'
+          }}
+        />
+      </div>
     </div>
   )
 }
