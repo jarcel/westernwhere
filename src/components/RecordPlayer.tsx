@@ -1,7 +1,7 @@
 import { useAudioPlayer } from '../hooks/useAudioPlayer.tsx'
 import { usePageScroll } from '../hooks/usePageScroll.tsx'
 import recordSvg from '../assets/img/ww-record.svg'
-import sleevePng from '../assets/img/ww-sleeve.png'
+import sleeveWebp from '../assets/img/ww-sleeve.webp'
 
 function PlayIcon() {
   return (
@@ -41,7 +41,7 @@ export function RecordPlayer() {
 
   return (
     <div className="record-container">
-      <img className="rc-sleeve" src={sleevePng} alt="" />
+      <img className="rc-sleeve" src={sleeveWebp} alt="" />
       <img
         id="ww-record"
         className={isPlaying ? 'play' : ''}
