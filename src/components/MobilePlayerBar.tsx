@@ -5,7 +5,7 @@ export function MobilePlayerBar() {
 
   const progress = duration > 0 ? currentTime / duration : 0
 
-  const handleSeek = (e: React.MouseEvent<HTMLProgressElement>) => {
+  const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect()
     const x = e.clientX - rect.left
     const percentage = x / rect.width
