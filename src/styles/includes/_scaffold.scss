@@ -26,7 +26,7 @@ body {
     width: 100%;
     backface-visibility: none;
     animation: prettyFade 2s linear reverse;
-    background: url('/img/bg.jpg') center center no-repeat;
+    background: url('/img/bg.webp') center center no-repeat;
     background-size: cover;
     @include rem(padding, 2rem);
     display: flex;
